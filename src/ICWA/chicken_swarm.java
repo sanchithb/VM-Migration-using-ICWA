@@ -1,11 +1,11 @@
-package Proposed_ChicWhale;
+package ICWA;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import static Code.Run.VM;
 import static Code.Run.PM;
 import static Code.Run.VM_Migration;
-import static Proposed_ChicWhale.run.VM_Migration_update;
+import static ChicWhale.run1.VM_Migration_update;
 
 public class chicken_swarm {
     public static ArrayList<Integer> Final_best = new ArrayList();

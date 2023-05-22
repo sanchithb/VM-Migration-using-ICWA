@@ -31,10 +31,13 @@ public class Run {
         generate_VM_parameters();
         System.out.println("\nAssign Task..");
         System.out.println("\nCalculating Load & optimizing...");
-        Proposed_ChicWhale.run.callmain();
+        
+        ChicWhale.run1.callmain();
         WOA.run.callmain();
         Firefly.run.callmain();
         ABC_BA.run.callmain();
+        ICWA.run.callmain();
+        
         System.out.println("\nDone.!");
         }
 

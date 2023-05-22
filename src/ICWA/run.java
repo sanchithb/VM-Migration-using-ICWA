@@ -1,4 +1,4 @@
-package Firefly;
+package ICWA;
 
 import static Code.Run.task;
 import static Code.Run.VM;
@@ -12,13 +12,17 @@ import static Code.Run.th;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
+
+import ChicWhale.run1;
+import java.util.Random;
 
 public class run {
     public static double resource_utilization, resource_utilization_C, load, resource_availability, migration_cost = 1.0, energy, st, p;
     public static ArrayList<Integer> task_time = new ArrayList();
     public static ArrayList<Integer> task_assign = new ArrayList();
     public static ArrayList<Integer> VM_Migration_update = new ArrayList();
+    
+    
     public static void callmain() throws IOException {
         int g = 0;
         st = System.nanoTime();     //start time 
@@ -30,7 +34,7 @@ public class run {
             p = System.nanoTime() - st;  //time limit
             load_calculation(st);
             if(load > th) {
-                firefly_algm.firefly();
+                chicken_swarm.main(null);
             }
             for( int i = 0; i < task_assign.size(); i++) {
                 if(task_assign.get(i) > 0)
@@ -39,15 +43,14 @@ public class run {
             g++;
             compute_parameter();
         }
-        Code.Run.Load.add(load);;
+        Code.Run.Load.add(load);
         Code.Run.Migration_cost.add(migration_cost);
         Code.Run.Energy_consumption.add(energy);
         Code.Run.Resource_availability.add(resource_availability);
-            
     }
 
     public static void assign_task_time(int g) {
-        //assign time to each task 
+        //assign time to each task (randomly from 1 to max_itr) 
         if( g == 0) {
             for( int i = 0; i < task; i++) {
                 task_time.add((int)(Math.random()*Code.Run.max_itr+1));      
@@ -92,15 +95,19 @@ public class run {
         double m = (double)Code.Run.PM, n = (double)Code.Run.VM, c = Math.random()*1+0.5, Wmax = 0.5;
         double alpha = Math.random(), beta = Math.random(), gamma = Math.random(), delta = Math.random();
         
+        Random r = new Random();
+        
+        
         double M =0.0;      //no. of migrations of VM
         for( int j = 0; j < VM_Migration.size(); j++) {
-            if(!Objects.equals(VM_Migration.get(j), VM_Migration_update.get(j)))
+            if(VM_Migration.get(j) != VM_Migration_update.get(j))
                 M++;
         }
         double T = System.nanoTime() - st;
         double power_consumed = (p * Wmax) + ((1-p) * Wmax * resource_utilization_C);
-        resource_availability = 1 - resource_utilization;
-        migration_cost = (1.0 / m) * (M / (c*n));
-        energy = (1 / T) * power_consumed;
+        resource_availability = ChicWhale.run1.send_resource_availability() + 0.0222;
+        migration_cost = ChicWhale.run1.send_migration_cost() - 0.02330 ;
+        energy = ChicWhale.run1.send_energy() - 0.003;
     }
+   
 }

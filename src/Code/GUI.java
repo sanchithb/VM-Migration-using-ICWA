@@ -31,14 +31,21 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+
+        jButton2.setText("Run Graph");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(650, 450));
@@ -53,28 +60,21 @@ public class GUI extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 185, 120, 40));
 
-        jButton2.setText("Run Graph");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(417, 80, 120, 50));
-
+        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Load", null, null, null, null},
-                {"Migration cost", null, null, null, null},
-                {"Energy Consumption", null, null, null, null},
-                {"Resource availability", null, null, null, null}
+                {"Load", null, null, null, null, null},
+                {"Migration cost", null, null, null, null, null},
+                {"Energy Consumption", null, null, null, null, null},
+                {"Resource availability", null, null, null, null, null}
             },
             new String [] {
-                "", "ABC-BA", "Firefly", "WOA", "ChicWhale"
+                "", "ABC-BA", "Firefly", "WOA", "ICWA", "CSO"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 540, 100));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 540, 110));
 
         jLabel1.setText("No. of Task");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 93, 28));
@@ -110,7 +110,7 @@ public class GUI extends javax.swing.JFrame {
             GUI.jTable1.setValueAt(Load.get(i), 0, i+1);
             GUI.jTable1.setValueAt(Migration_cost.get(i), 1, i+1);
             GUI.jTable1.setValueAt(Energy_consumption.get(i), 2, i+1); 
-            GUI.jTable1.setValueAt(Resource_availability.get(i), 3, i+1);   
+            GUI.jTable1.setValueAt(Resource_availability.get(i), 3, i+1);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -119,30 +119,35 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
         DefaultCategoryDataset dcd1=new DefaultCategoryDataset();
         DefaultCategoryDataset dcd2=new DefaultCategoryDataset();
         DefaultCategoryDataset dcd3=new DefaultCategoryDataset();
         DefaultCategoryDataset dcd4=new DefaultCategoryDataset();
         
-        dcd1.setValue(Load.get(0),"Load","ABC-BA");
+        dcd1.setValue(Load.get(0),"Load","ABCBA");
         dcd1.setValue(Load.get(1),"Load","Firefly"); 
         dcd1.setValue(Load.get(2),"Load","WOA");
-        dcd1.setValue(Load.get(3),"Load","Proposed ChicWhale");
+        dcd1.setValue(Load.get(3),"Load","ChicWhale");
+        dcd1.setValue(Load.get(4),"Load","ICWA");
         
-        dcd2.setValue(Migration_cost.get(0),"Migration cost","ABC-BA");
+        dcd2.setValue(Migration_cost.get(0),"Migration cost","ABCBA");
         dcd2.setValue(Migration_cost.get(1),"Migration cost","Firefly"); 
         dcd2.setValue(Migration_cost.get(2),"Migration cost","WOA");
-        dcd2.setValue(Migration_cost.get(3),"Migration cost","Proposed ChicWhale");
+        dcd2.setValue(Migration_cost.get(3),"Migration cost","ChicWhale");
+        dcd2.setValue(Migration_cost.get(4),"Migration cost","ICWA");
         
-        dcd3.setValue(Energy_consumption.get(0),"Energy consumption","ABC-BA");
+        dcd3.setValue(Energy_consumption.get(0),"Energy consumption","ABCBA");
         dcd3.setValue(Energy_consumption.get(1),"Energy consumption","Firefly"); 
         dcd3.setValue(Energy_consumption.get(2),"Energy consumption","WOA");
-        dcd3.setValue(Energy_consumption.get(3),"Energy consumption","Proposed ChicWhale");
+        dcd3.setValue(Energy_consumption.get(3),"Energy consumption","ChicWhale");
+        dcd3.setValue(Energy_consumption.get(4),"Energy consumption","ICWA");
         
-        dcd4.setValue(Resource_availability.get(0),"Resource availability","ABC-BA");
+        dcd4.setValue(Resource_availability.get(0),"Resource availability","ABCBA");
         dcd4.setValue(Resource_availability.get(1),"Resource availability","Firefly"); 
         dcd4.setValue(Resource_availability.get(2),"Resource availability","WOA");
-        dcd4.setValue(Resource_availability.get(3),"Resource availability","Proposed ChicWhale");
+        dcd4.setValue(Resource_availability.get(3),"Resource availability","ChicWhale");
+        dcd4.setValue(Resource_availability.get(4),"Resource availability","ICWA");
         
         
     JFreeChart jchart1 = ChartFactory.createBarChart("", "", "Load", dcd1, PlotOrientation.VERTICAL,false, true, false);
@@ -154,6 +159,7 @@ public class GUI extends javax.swing.JFrame {
     CategoryPlot plot2 = jchart2.getCategoryPlot();
     CategoryPlot plot3 = jchart3.getCategoryPlot();
     CategoryPlot plot4 = jchart4.getCategoryPlot();
+    
     plot1.setRangeGridlinePaint(Color.white);
     plot2.setRangeGridlinePaint(Color.white);
     plot3.setRangeGridlinePaint(Color.white);

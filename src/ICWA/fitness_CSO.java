@@ -1,16 +1,16 @@
-package Proposed_ChicWhale;
+package ICWA;
 
 import java.util.ArrayList;
 import static Code.Run.VM_Migration;
-import static Proposed_ChicWhale.run.VM_Migration_update;
-import static Proposed_ChicWhale.run.st;
-import static Proposed_ChicWhale.run.p;
-import static Proposed_ChicWhale.run.load;
-import static Proposed_ChicWhale.run.resource_utilization;
-import static Proposed_ChicWhale.run.resource_utilization_C;
-import static Proposed_ChicWhale.run.resource_availability;
-import static Proposed_ChicWhale.run.migration_cost;
-import static Proposed_ChicWhale.run.energy;
+import static ChicWhale.run1.VM_Migration_update;
+import static ChicWhale.run1.st;
+import static ChicWhale.run1.p;
+import static ChicWhale.run1.load;
+import static ChicWhale.run1.resource_utilization;
+import static ChicWhale.run1.resource_utilization_C;
+import static ChicWhale.run1.resource_availability;
+import static ChicWhale.run1.migration_cost;
+import static ChicWhale.run1.energy;
 
 public class fitness_CSO {
     public static ArrayList<Double> func(ArrayList<ArrayList<Integer>> migration) {

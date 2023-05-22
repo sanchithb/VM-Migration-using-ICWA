@@ -1,4 +1,4 @@
-package Proposed_ChicWhale;
+package ChicWhale;
 
 import static Code.Run.task;
 import static Code.Run.VM;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class run {
+public class run1 {
     public static double resource_utilization, resource_utilization_C, load, resource_availability, migration_cost = 1.0, energy, st, p;
     public static ArrayList<Integer> task_time = new ArrayList();
     public static ArrayList<Integer> task_assign = new ArrayList();
@@ -100,5 +100,59 @@ public class run {
         resource_availability = 1 - resource_utilization;
         migration_cost = (1.0 / m) * (M / (c*n));
         energy = (1 / T) * power_consumed;
+    }
+    
+    public static double send_resource_availability(){
+        double m = (double)Code.Run.PM, n = (double)Code.Run.VM, c = Math.random()*1+0.5, Wmax = 0.5;
+        double alpha = Math.random(), beta = Math.random(), gamma = Math.random(), delta = Math.random();
+        
+        double M =0.0;      //no. of migrations of VM
+        for( int j = 0; j < VM_Migration.size(); j++) {
+            if(VM_Migration.get(j) != VM_Migration_update.get(j))
+                M++;
+        }
+        double T = System.nanoTime() - st;
+        double power_consumed = (p * Wmax) + ((1-p) * Wmax * resource_utilization_C);
+        resource_availability = 1 - resource_utilization;
+        migration_cost = (1.0 / m) * (M / (c*n));
+        energy = (1 / T) * power_consumed;
+        
+        return resource_availability;
+    }
+    
+    public static double send_migration_cost(){
+        double m = (double)Code.Run.PM, n = (double)Code.Run.VM, c = Math.random()*1+0.5, Wmax = 0.5;
+        double alpha = Math.random(), beta = Math.random(), gamma = Math.random(), delta = Math.random();
+        
+        double M =0.0;      //no. of migrations of VM
+        for( int j = 0; j < VM_Migration.size(); j++) {
+            if(VM_Migration.get(j) != VM_Migration_update.get(j))
+                M++;
+        }
+        double T = System.nanoTime() - st;
+        double power_consumed = (p * Wmax) + ((1-p) * Wmax * resource_utilization_C);
+        resource_availability = 1 - resource_utilization;
+        migration_cost = (1.0 / m) * (M / (c*n));
+        energy = (1 / T) * power_consumed;
+        
+        return migration_cost;
+    }
+    
+    public static double send_energy(){
+        double m = (double)Code.Run.PM, n = (double)Code.Run.VM, c = Math.random()*1+0.5, Wmax = 0.5;
+        double alpha = Math.random(), beta = Math.random(), gamma = Math.random(), delta = Math.random();
+        
+        double M =0.0;      //no. of migrations of VM
+        for( int j = 0; j < VM_Migration.size(); j++) {
+            if(VM_Migration.get(j) != VM_Migration_update.get(j))
+                M++;
+        }
+        double T = System.nanoTime() - st;
+        double power_consumed = (p * Wmax) + ((1-p) * Wmax * resource_utilization_C);
+        resource_availability = 1 - resource_utilization;
+        migration_cost = (1.0 / m) * (M / (c*n));
+        energy = (1 / T) * power_consumed;
+        
+        return energy;
     }
 }
